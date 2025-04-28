@@ -1,0 +1,1 @@
+Sentiment analysis API, done as homework during AI Systems Engineering course.
