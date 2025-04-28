@@ -1,7 +1,28 @@
 [project]
 name = "sentiment-analysis-app"
 version = "0.1.0"
-description = "Add your description here"
+description = "Analyze sentiment of a given text"
 readme = "README.md"
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "clean-text>=0.6.0",
+    "joblib>=1.4.2",
+    "torch>=2.7.0",
+    "transformers>=4.51.3",
+]
+
+[dependency-groups]
+dev = [
+    "pre-commit>=4.2.0",
+    "pytest>=8.3.5",
+    "ruff>=0.11.7",
+    "xenon>=0.9.3",
+]
+
+[tool.uv.sources]
+torch = { index = "pytorch" }
+
+[[tool.uv.index]]
+name = "pytorch"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
