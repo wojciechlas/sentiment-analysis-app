@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 import cloudpickle
 
 
@@ -10,7 +10,7 @@ inference = Inference("artifacts/")
 
 
 class PredtictionRequest(BaseModel):
-    text: str
+    text: str = Field(..., min_length=1, max_length=500, description="Text to analyze")
 
 
 class PredictionResponse(BaseModel):
@@ -32,4 +32,5 @@ async def predict(text: PredtictionRequest):
     """
     Predict the sentiment of the given text.
     """
+
     return {"prediction": inference.predict(text.text)}
